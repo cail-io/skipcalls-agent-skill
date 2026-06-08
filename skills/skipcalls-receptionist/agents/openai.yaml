@@ -1,0 +1,4 @@
+interface:
+  display_name: "SkipCalls Receptionist"
+  short_description: "Operate SkipCalls AI receptionists through the SkipCalls MCP server."
+  default_prompt: "Connect to SkipCalls MCP, show my receptionists, and summarize recent inbound calls before suggesting changes."

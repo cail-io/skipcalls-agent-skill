@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "SkipCalls",
+      "description": "Operate SkipCalls AI receptionists, outbound calls, inbound call history, contacts, and MCP setup.",
+      "skills": ["skipcalls-receptionist"]
+    }
+  ]
+}
