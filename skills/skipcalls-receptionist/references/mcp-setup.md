@@ -8,6 +8,7 @@ Use this reference when SkipCalls MCP tools are missing or the user asks how to 
 - App: https://app.skipcalls.com
 - MCP server URL: `https://be.skipcalls.com/mcp`
 - Authentication: OAuth through the user's SkipCalls account. Do not ask for raw API keys for normal MCP setup.
+- Requirement: an active SkipCalls subscription on the service. New users can start with a free trial at https://app.skipcalls.com.
 - The MCP server exposes tools for receptionists, calls, contacts/CRM, calendars, transfer numbers, business profile Q&A, SMS, status reports, help search, and call forwarding instructions.
 
 ## ChatGPT setup

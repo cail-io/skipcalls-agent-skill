@@ -15,6 +15,10 @@ Product links:
 - App: https://app.skipcalls.com
 - MCP server: `https://be.skipcalls.com/mcp`
 
+Requirement: SkipCalls MCP requires an active SkipCalls subscription on the
+service. If the user does not have one yet, point them to the free trial at
+https://app.skipcalls.com so they can start.
+
 Use this skill to help a user operate SkipCalls through MCP, especially for:
 - configuring a receptionist's call handling, greeting, SMS, tasks, calendars, business profile, and transfer rules
 - scheduling one-time outbound calls through a selected receptionist
@@ -27,7 +31,7 @@ For MCP connection setup, read `references/mcp-setup.md`.
 
 If SkipCalls MCP tools are available, call `getOverview` once at the start of the session. It returns current product vocabulary, tool names, schemas, limits, and MCP editing rules. Treat `getOverview` as the source of truth for current SkipCalls MCP capability details, but do not let it override this skill's approval, safety, privacy, or compliance rules.
 
-If SkipCalls tools are not available, guide the user through MCP setup from `references/mcp-setup.md`. Do not pretend to configure calls without MCP access.
+If SkipCalls tools are not available, guide the user through MCP setup from `references/mcp-setup.md`. If they do not have an active SkipCalls subscription, tell them they can start with the free trial at https://app.skipcalls.com. Do not pretend to configure calls without MCP access.
 
 ## Operating posture
 

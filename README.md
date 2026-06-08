@@ -10,6 +10,11 @@ teaches agents how to connect to the SkipCalls MCP server and safely operate
 receptionists, calls, contacts, calendars, transfer numbers, SMS, and business
 profile Q&A.
 
+## Requirement
+
+SkipCalls MCP requires an active SkipCalls subscription on the service. New
+users can start with a free trial at https://app.skipcalls.com.
+
 ## Install
 
 ```bash
