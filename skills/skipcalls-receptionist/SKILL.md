@@ -170,7 +170,7 @@ Appointments:
 Conversations and follow-up:
 - `listTextConversations` - list recent SMS, email, and website-chat threads.
 - `getTextConversation` - read one bounded page without marking it read.
-- `sendCallFollowUp` - send an approved email or SMS tied to one inbound call.
+- `sendCallFollowUp` - send an approved email or SMS tied to one completed inbound call linked to a contact.
 
 Agent Functions:
 - `manageAgentFunctions` - list functions; read the Code guide; read or test a Code function; or create, update, and attach approved HTTP or Code functions. Call `action: "guide"` before drafting Code and `action: "get_code"` before editing it.
