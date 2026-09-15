@@ -21,7 +21,7 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "SkipCalls",
+        "displayName": "AI Receptionist - SkipCalls",
         "shortDescription": "Operate your AI receptionist from ChatGPT and Codex.",
         "longDescription": "Review calls and conversations, configure receptionists, manage contacts and calendars, and send approved follow-ups through your SkipCalls account.",
         "developerName": "SkipCalls",
