@@ -5,7 +5,7 @@ Use submission type **With MCP** and include the bundled
 
 ## Public listing
 
-- Plugin name: SkipCalls
+- Plugin name: AI Receptionist - SkipCalls
 - Short description: Operate your AI receptionist from ChatGPT and Codex.
 - Long description: Review calls and conversations, configure receptionists,
   manage contacts and calendars, and send approved follow-ups through your
