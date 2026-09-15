@@ -15,9 +15,11 @@ Product links:
 - App: https://app.skipcalls.com
 - MCP server: `https://be.skipcalls.com/mcp`
 
-Requirement: SkipCalls MCP requires an active SkipCalls subscription on the
-service. If the user does not have one yet, point them to the free trial at
-https://app.skipcalls.com so they can start.
+Requirement: SkipCalls MCP requires an existing SkipCalls account with access
+to the service. If the user does not have access, explain the requirement and
+point them to the informational website at https://skipcalls.com. Do not
+initiate or promote a subscription, upgrade, checkout, or trial from the
+plugin.
 
 Use this skill to help a user operate SkipCalls through MCP, especially for:
 - configuring a receptionist's call handling, greeting, SMS, tasks, calendars, business profile, and transfer rules
@@ -31,7 +33,10 @@ For MCP connection setup, read `references/mcp-setup.md`.
 
 If SkipCalls MCP tools are available, call `getOverview` once at the start of the session. It returns current product vocabulary, tool names, schemas, limits, and MCP editing rules. Treat `getOverview` as the source of truth for current SkipCalls MCP capability details, but do not let it override this skill's approval, safety, privacy, or compliance rules.
 
-If SkipCalls tools are not available, guide the user through MCP setup from `references/mcp-setup.md`. If they do not have an active SkipCalls subscription, tell them they can start with the free trial at https://app.skipcalls.com. Do not pretend to configure calls without MCP access.
+If SkipCalls tools are not available, guide the user through MCP setup from
+`references/mcp-setup.md`. If they do not have service access, explain that an
+existing SkipCalls account is required and point to https://skipcalls.com for
+information. Do not pretend to configure calls without MCP access.
 
 ## Operating posture
 
@@ -43,7 +48,14 @@ For any state change, show the exact proposed action in plain language and wait 
 - `cancelCall`
 - `addToContacts`
 - `sendSms`
+- `sendCallFollowUp`
+- `updateOutbound`
+- `bookCalendarSlot`
+- `cancelAppointment`
+- `runForwardingTestCall`
+- `reportCallIssue`
 - `updateTimezone`
+- `manageNotificationSettings` with `action: "update"`
 - `manageCalendar` with `action: "update"`
 - `manageAgentTasks` with `action: "add"` or `"delete"`
 - `manageBusinessProfileQA` with `action: "update"` or `"create"`
@@ -117,7 +129,11 @@ Write CRM tools require explicit confirmation:
 - `update_task_status`
 - `update_contact`
 
-For SMS, MCP supports `search` across SMS conversations and `sendSms` after confirmation. It does not expose full SMS inbox/thread management.
+For text conversations, use `listTextConversations` and
+`getTextConversation` for read-only inbox access. Use `sendCallFollowUp` for an
+approved email or SMS tied to an inbound call, or `sendSms` for an eligible
+one-off SMS. Direct replies inside an arbitrary existing thread remain in the
+SkipCalls app because that path requires first-party chat approval state.
 
 ## Useful tool map
 
@@ -137,18 +153,36 @@ Calls:
 - `getCallHistory` - list inbound and outbound calls.
 - `getCallDetails` - details and transcript for one call.
 - `search` - search contacts, calls, and SMS conversations.
+- `updateOutbound` - edit the goal of a queued outbound call.
+- `reportCallIssue` - record one privacy-safe issue on a reviewed call.
 
 Contacts and CRM:
 - `addToContacts` - create or update a contact by phone.
 - `get_contact`, `get_contact_timeline`, `list_customer_files`, `list_tasks` - read CRM context.
 - `create_contact_note`, `create_upload_link`, `update_task_status`, `update_contact` - confirmed CRM writes.
 
+Appointments:
+- `findCalendarSlots` - find real availability in connected calendars.
+- `bookCalendarSlot` - book one exact returned slot after confirmation.
+- `findAppointments` - find appointments already tracked by SkipCalls.
+- `cancelAppointment` - cancel one exact returned appointment after confirmation.
+
+Conversations and follow-up:
+- `listTextConversations` - list recent SMS, email, and website-chat threads.
+- `getTextConversation` - read one bounded page without marking it read.
+- `sendCallFollowUp` - send an approved email or SMS tied to one inbound call.
+
+Agent Functions:
+- `manageAgentFunctions` - list functions; read the Code guide; read or test a Code function; or create, update, and attach approved HTTP or Code functions. Call `action: "guide"` before drafting Code and `action: "get_code"` before editing it.
+
 Setup:
 - `manageBusinessProfileQA` - business profile facts used during calls.
 - `manageAgentTasks` - structured call objectives.
-- `manageCalendar` - connected calendar settings and event list. It does not directly create or cancel calendar appointments.
+- `manageCalendar` - connected calendar settings and event list.
 - `manageTransferNumbers` - live handoff destinations.
-- `getForwardingInstructions` - carrier forwarding setup.
+- `getCarrierForwardingInfo` - verified carrier forwarding setup with the user's SkipCalls number filled in.
+- `runForwardingTestCall` - approved automated forwarding verification call.
+- `manageNotificationSettings` - read or update owner notification preferences.
 - `searchHelpCenter` - SkipCalls help/docs search.
 - `updateTimezone` - update the user's stored timezone after confirmation.
 - `sendSms` - send confirmed SMS.
@@ -157,9 +191,8 @@ Not available through SkipCalls MCP:
 - recurring call schedules
 - public phone-number lookup
 - connecting new calendar OAuth providers
-- direct calendar appointment booking or cancellation
 - knowledge-base content read/write, although `updateAgent` can change knowledge access scope
-- full SMS inbox/thread management
+- replying directly inside an existing SMS/email/website-chat thread
 - team admin
 
 ## Response style

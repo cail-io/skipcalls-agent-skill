@@ -1,0 +1,42 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skipcalls",
+  "version": "1.0.0",
+  "description": "Operate SkipCalls AI receptionists, calls, contacts, calendars, messages, and settings.",
+  "author": {
+    "name": "SkipCalls",
+    "email": "support@skipcalls.com",
+    "url": "https://skipcalls.com"
+  },
+  "homepage": "https://skipcalls.com/for-agents",
+  "repository": "https://github.com/cail-io/skipcalls-agent-skill",
+  "license": "MIT",
+  "keywords": [
+    "ai-receptionist",
+    "phone-calls",
+    "crm",
+    "calendar",
+    "customer-support"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "SkipCalls",
+        "shortDescription": "Operate your AI receptionist from ChatGPT and Codex.",
+        "longDescription": "Review calls and conversations, configure receptionists, manage contacts and calendars, and send approved follow-ups through your SkipCalls account.",
+        "developerName": "SkipCalls",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://skipcalls.com",
+        "privacyPolicyURL": "https://app.skipcalls.com/privacy",
+        "termsOfServiceURL": "https://app.skipcalls.com/terms",
+        "defaultPrompt": [
+          "Show my receptionists and summarize recent inbound calls.",
+          "Review my receptionist setup and suggest improvements.",
+          "Show recent customer conversations that need follow-up."
+        ],
+        "brandColor": "#10B981"
+      }
+    }
+  }
+}
