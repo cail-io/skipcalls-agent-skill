@@ -4,7 +4,7 @@
   "groupings": [
     {
       "title": "SkipCalls",
-      "description": "Operate SkipCalls AI receptionists, outbound calls, inbound call history, contacts, and MCP setup.",
+      "description": "Operate SkipCalls receptionists, calls, contacts, calendars, conversations, and settings through MCP.",
       "skills": ["skipcalls-receptionist"]
     }
   ]
