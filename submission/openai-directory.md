@@ -49,8 +49,9 @@ Use submission type **With MCP** and include the bundled
 
 Initial SkipCalls plugin submission. The plugin bundles the
 `skipcalls-receptionist` operating skill and the production OAuth MCP server.
-The MCP surface contains 40 annotated operational tools for receptionists,
+The MCP surface contains 45 annotated operational tools for receptionists,
 calls, contacts, appointments, calendars, conversations, follow-ups,
+first-time onboarding, billing and Stripe-hosted subscription checkout,
 notifications, Agent Functions, forwarding, SMS, and product help.
 
 ## Portal-only prerequisites

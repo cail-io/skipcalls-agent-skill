@@ -9,7 +9,7 @@ Use this reference when SkipCalls MCP tools are missing or the user asks how to 
 - MCP server URL: `https://be.skipcalls.com/mcp`
 - Authentication: OAuth through the user's SkipCalls account. Do not ask for raw API keys for normal MCP setup.
 - Requirement: an existing SkipCalls account with access to the service. The plugin must not initiate or promote a subscription, upgrade, checkout, or trial.
-- The MCP server exposes 40 operational tools for receptionists, calls, contacts/CRM, appointments, calendars, text conversations, follow-ups, notification settings, Agent Functions, transfer numbers, business profile Q&A, SMS, status reports, help search, and call forwarding.
+- The MCP server exposes 45 operational tools for receptionists, first-time onboarding, billing/subscription checkout, calls, contacts/CRM, appointments, calendars, text conversations, follow-ups, notification settings, Agent Functions, transfer numbers, business profile Q&A, SMS, status reports, help search, and call forwarding.
 
 ## ChatGPT setup
 
@@ -68,6 +68,12 @@ Use SkipCalls MCP. Call getOverview, listAgents, and summarize my recent inbound
 ```
 
 Expected first tools: `getOverview`, then `listAgents`. For recent inbound calls, the agent should use `getCallHistory` with `type: "INCOMING"`.
+
+For a newly registered account, call `loadSkill` with `skillName="onboarding"`,
+then `onboardingProcess` with `action="status"`. Follow the one returned missing
+step and recheck until it reports `already_complete`. Billing reads use
+`getBillingInfo`; `startSubscriptionCheckout` may create a Stripe-hosted link
+only after the owner approves the exact plan, price, billing period, and trial.
 
 If `getOverview` works but other tools are missing, use the client's tool discovery/search UI. SkipCalls registers the tools on the server.
 
