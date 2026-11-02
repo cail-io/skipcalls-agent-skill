@@ -1,3 +1,5 @@
+> **Moved:** this skill now lives in [cail-io/skipcalls-agent-skills](https://github.com/cail-io/skipcalls-agent-skills). Install with `npx skills add cail-io/skipcalls-agent-skills`.
+
 # SkipCalls Agent Plugin
 
 Use SkipCalls from ChatGPT, Codex, and other agents that support Agent Plugins,
